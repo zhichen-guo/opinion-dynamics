@@ -1,0 +1,20 @@
+# from https://gitlab.oit.duke.edu/academic-technology/public-resources-duke/mern_stack
+version: '3.1'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    volumes:
+      - .:/app
+      - node-modules-volume-react:/app/node_modules # this mount keeps node_modules from getting wiped when we mount the container
+    ports:
+      - 3000:3000   
+    stdin_open: true
+    tty: true
+    
+volumes:
+  node-modules-volume-react:
+
